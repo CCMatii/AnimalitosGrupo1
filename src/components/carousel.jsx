@@ -2,6 +2,7 @@ import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Button, Paper, Title, useMantineTheme, Text } from '@mantine/core';
 import classes from './Demo.module.css';
+import '@mantine/carousel/styles.css';
 
 const data = [
   {
