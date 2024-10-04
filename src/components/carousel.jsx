@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Button, Paper, Title, useMantineTheme, Text } from '@mantine/core';
-import classes from './Demo.module.css';
+import classes from './carousel.module.css';
 import '@mantine/carousel/styles.css';
 
 const data = [
@@ -43,13 +44,7 @@ const data = [
   },
 ];
 
-interface CardProps {
-  image: string;
-  title: string;
-  category: string;
-}
-
-function Card({ image, title, category }: CardProps) {
+function Card({ image, title, category }) {
   return (
     <Paper
       shadow="md"
@@ -73,7 +68,14 @@ function Card({ image, title, category }: CardProps) {
   );
 }
 
-function Demo() {
+// Definir los tipos de props con PropTypes
+Card.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+};
+
+function Carrusel() {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data.map((item) => (
@@ -84,8 +86,8 @@ function Demo() {
 
   return (
     <Carousel
-      slideSize={{ base: '100%', sm: '50%' }}
-      slideGap={{ base: 'xl', sm: 2 }}
+      slideSize={mobile ? '100%' : '50%'}
+      slideGap="xl"
       align="start"
       slidesToScroll={mobile ? 1 : 2}
     >
@@ -94,4 +96,5 @@ function Demo() {
   );
 }
 
+export default Carrusel;
 //npm install embla-carousel-react@^7.1.0 @mantine/carousel

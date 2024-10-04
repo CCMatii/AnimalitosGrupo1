@@ -1,6 +1,6 @@
 import { Popover, Text, Button } from '@mantine/core';
 
-function Demo() {
+function PopUp() {
   return (
     <Popover width={200} position="bottom" withArrow shadow="md">
       <Popover.Target>
@@ -12,3 +12,4 @@ function Demo() {
     </Popover>
   );
 }
+export default PopUp;

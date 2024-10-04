@@ -3,7 +3,7 @@ import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
 const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
 
-function Demo() {
+function ComboBoxFilter() {
   const combobox = useCombobox();
   const [value, setValue] = useState('');
   const shouldFilterOptions = !groceries.some((item) => item === value);
@@ -48,4 +48,5 @@ function Demo() {
       </Combobox.Dropdown>
     </Combobox>
   );
-}
+} 
+export default ComboBoxFilter;
