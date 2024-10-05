@@ -27,8 +27,8 @@ function ComboBoxFilter() {
     >
       <Combobox.Target>
         <TextInput
-          label="Pick value or type anything"
-          placeholder="Pick value or type anything"
+          label="Filtrar por región"
+          placeholder="Seleccione región"
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
