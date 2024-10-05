@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
-import { Button, Paper, Title, useMantineTheme, Text } from '@mantine/core';
+import { Button, Paper, Title, useMantineTheme, Text, Group } from '@mantine/core';
 import classes from './carousel.module.css';
 import '@mantine/carousel/styles.css';
 
@@ -85,16 +85,21 @@ function Carrusel() {
   ));
 
   return (
-    <Carousel
-      slideSize={mobile ? '100%' : '50%'}
-      slideGap="xl"
-      align="start"
-      slidesToScroll={mobile ? 1 : 2}
-    >
-      {slides}
-    </Carousel>
+    <Group justify="center">
+      <Title order={2} style={{ marginTop: 40 }}>Perros 🐶</Title>
+      <Carousel
+        style={{ marginTop: 20 }}
+        slideSize={mobile ? '100%' : '33.33%'}
+        slideGap="xl"
+        align="start"
+        slidesToScroll={mobile ? 1 : 2}
+      >
+        {slides}
+      </Carousel>
+    </Group>
   );
 }
 
 export default Carrusel;
 //npm install embla-carousel-react@^7.1.0 @mantine/carousel
+//npm install prop-types
