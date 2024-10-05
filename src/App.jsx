@@ -9,7 +9,7 @@ export default function App() {
     <MantineProvider>
       <Box style={{ width: '100vw', height: '100vh' }}>
             <BackgroundImage
-              src="https://images.alphacoders.com/137/1373665.jpeg"
+              src="https://img.freepik.com/vector-gratis/adorable-patron-huella-animal-diseno-fondo_1017-53348.jpg"
               radius="sm"
               style={{ width: '100%', height: '100%' }}
             >
