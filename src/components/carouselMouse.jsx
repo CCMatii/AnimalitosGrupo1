@@ -91,6 +91,10 @@ function CarruselRoedores() {
     );
   }
 
+  if (animals.length === 0) {
+    return null;
+  }
+
   return (
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Roedores 🐁</Title>
@@ -101,7 +105,7 @@ function CarruselRoedores() {
         align="start"
         slidesToScroll={mobile ? 1 : 2}
       >
-         {slides.length > 0 ? slides : <Text>No hay animales disponibles</Text>}
+         {slides}
       </Carousel>
     </Group>
   );

@@ -76,6 +76,7 @@ function CarruselConejos() {
   }
 
 
+
   const slides = []
 
   for (let i = 0; i < animals.length; i++) {
@@ -91,6 +92,10 @@ function CarruselConejos() {
     );
   }
 
+  if (animals.length === 0) {
+    return null;
+  }
+
   return (
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Conejos 🐇</Title>
@@ -101,7 +106,7 @@ function CarruselConejos() {
         align="start"
         slidesToScroll={mobile ? 1 : 2}
       >
-         {slides.length > 0 ? slides : <Text>No hay animales disponibles</Text>}
+         {slides}
       </Carousel>
     </Group>
   );

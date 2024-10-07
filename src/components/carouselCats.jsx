@@ -91,6 +91,10 @@ function CarruselGatos() {
     );
   }
 
+  if (animals.length === 0) {
+    return null;
+  }
+
   return (
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Gatos 😺</Title>
@@ -101,7 +105,7 @@ function CarruselGatos() {
         align="start"
         slidesToScroll={mobile ? 1 : 2}
       >
-         {slides.length > 0 ? slides : <Text>No hay animales disponibles</Text>}
+         {slides}
       </Carousel>
     </Group>
   );
