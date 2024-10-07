@@ -28,7 +28,7 @@ function Card({ image, title, category }) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
+      <Button variant="filled" color="gray" size="md" radius="xl">
         Detalles
       </Button>
     </Paper>
@@ -41,7 +41,7 @@ Card.propTypes = {
   category: PropTypes.string.isRequired,
 };
 
-function Carrusel() {
+function CarruselAnimales() {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const [isLoading, setIsLoading] = useState(true);
@@ -107,6 +107,6 @@ function Carrusel() {
   );
 }
 
-export default Carrusel;
+export default CarruselAnimales;
 //npm install embla-carousel-react@^7.1.0 @mantine/carousel
 //npm install prop-types
