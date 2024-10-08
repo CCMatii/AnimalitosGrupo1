@@ -41,7 +41,7 @@ Card.propTypes = {
   category: PropTypes.string.isRequired,
 };
 
-function CarruselConejos() {
+function CarruselConejos({ selectedRegionId }) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,12 +52,24 @@ function CarruselConejos() {
     setIsLoading(true)
     setError(null)
 
-    fetch(`https://huachitos.cl/api/animales/tipo/conejo`)
+    let link = `https://huachitos.cl/api/animales/tipo/conejo`;
+
+    if (selectedRegionId !== 0 && selectedRegionId >= 1 && selectedRegionId <= 16) {
+      link = `https://huachitos.cl/api/animales/region/${selectedRegionId}/tipo/conejo/estado/adopcion`;
+    }
+
+    fetch(link)
       .then(response => response.json())
-      .then(data => setAnimals(data.data))
+      .then(data => {
+        if (data.message && data.message.includes("No se encontraron animales")) {
+          setAnimals([]);
+        } else {
+          setAnimals(data.data || []);
+        }
+      })
       .catch(error => setError(error))
       .finally(() => setIsLoading(false))
-  }, []);
+  }, [selectedRegionId]);
 
   if (isLoading) {
     return (

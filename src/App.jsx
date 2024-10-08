@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import { useState } from "react";
 import { MantineProvider, Container, Group, BackgroundImage, Box } from "@mantine/core";
 import ComboBoxFilter from "./components/combobox";
 import Titulo from "./components/title";
@@ -10,6 +11,22 @@ import CarruselRoedores from "./components/carouselMouse";
 import CarruselAves from "./components/carouselBird";
 
 export default function App() {
+  const [selectedRegionId, setSelectedRegionId] = useState(0);
+  const carruselAnimales = <CarruselAnimales selectedRegionId={selectedRegionId}/>;
+  const carruselPerros = <CarruselPerros selectedRegionId={selectedRegionId}/>;
+  const carruselGatos = <CarruselGatos selectedRegionId={selectedRegionId}/>;
+  const carruselConejos = <CarruselConejos selectedRegionId={selectedRegionId}/>;
+  const carruselRoedores = <CarruselRoedores selectedRegionId={selectedRegionId}/>;
+  const carruselAves = <CarruselAves selectedRegionId={selectedRegionId}/>;
+
+  const areAllCarouselsEmpty = 
+    !carruselAnimales &&
+    !carruselPerros &&
+    !carruselGatos &&
+    !carruselConejos &&
+    !carruselRoedores &&
+    !carruselAves;
+
   return (
     <MantineProvider>
       <Box style={{ width: '100vw', height: '100vh' }}>
@@ -24,15 +41,25 @@ export default function App() {
             >
               <Container>
                 <Group gap="xl">
-                <ComboBoxFilter />
+                <ComboBoxFilter onRegionChange={setSelectedRegionId}/>
                 <Titulo />
                 </Group>
-                <CarruselAnimales/>
-                <CarruselPerros/>
-                <CarruselGatos/>
-                <CarruselConejos/>
-                <CarruselRoedores/>
-                <CarruselAves/>
+                {areAllCarouselsEmpty ? (
+                <Image
+                src="https://cdn-icons-png.flaticon.com/512/4634/4634731.png"
+                alt="No hay animales disponibles con estos filtros."
+                style={{ marginTop: '40px' }}
+                />
+                ) : (
+                  <>
+                  {carruselAnimales}
+                  {carruselPerros}
+                  {carruselGatos}
+                  {carruselConejos}
+                  {carruselRoedores}
+                  {carruselAves}
+                  </>
+                )}
               </Container>
             </BackgroundImage>
       </Box>
