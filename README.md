@@ -1,4 +1,4 @@
-## React + Mantine Template
+# ANIMALITOS 
 
 ![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/awerito/react-mantine-template/dev/vite?logo=vite)
 ![GitHub package.json prod dependency version](https://img.shields.io/github/package-json/dependency-version/awerito/react-mantine-template/%40mantine%2Fcore?logo=mantine)
