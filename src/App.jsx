@@ -32,7 +32,7 @@ export default function App() {
     <MantineProvider>
       <Box style={{ width: '100vw', height: '100vh' }}>
             <BackgroundImage
-              src="https://img.freepik.com/vector-gratis/adorable-patron-huella-animal-diseno-fondo_1017-53348.jpg"
+              src="https://img.freepik.com/vector-gratis/fondo-huellas-patas-diseno-plano_23-2151169501.jpg?t=st=1728515781~exp=1728519381~hmac=684dabdaf504a198d9eb89d53d23e44f65304dde2aee74a3c0a8af278501652e&w=1380"
               radius="sm"
               style={{minHeight: '100vh',
                 backgroundPosition: 'center',

@@ -36,37 +36,39 @@ function ComboBoxFilter({ onRegionChange }) {
   ));
 
   return (
-    <Combobox
-      onOptionSubmit={(optionValue) => {
-        const selectedRegion = regions.find((region) => region.name === optionValue);
-        setValue(optionValue);
-        onRegionChange(selectedRegion.id);
-        combobox.closeDropdown();
-      }}
-      store={combobox}
-    >
-      <Combobox.Target>
-        <TextInput
-          label="Filtrar por región"
-          placeholder="Seleccione región"
-          value={value}
-          onChange={(event) => {
-            setValue(event.currentTarget.value);
-            combobox.openDropdown();
-            combobox.updateSelectedOptionIndex();
-          }}
-          onClick={() => combobox.openDropdown()}
-          onFocus={() => combobox.openDropdown()}
-          onBlur={() => combobox.closeDropdown()}
-        />
-      </Combobox.Target>
+    <div style={{ textAlign: 'left', marginLeft: 0 }}> 
+      <Combobox
+        onOptionSubmit={(optionValue) => {
+          const selectedRegion = regions.find((region) => region.name === optionValue);
+          setValue(optionValue);
+          onRegionChange(selectedRegion.id);
+          combobox.closeDropdown();
+        }}
+        store={combobox}
+      >
+        <Combobox.Target>
+          <TextInput
+            label="Filtrar por región"
+            placeholder="Seleccione región"
+            value={value}
+            onChange={(event) => {
+              setValue(event.currentTarget.value);
+              combobox.openDropdown();
+              combobox.updateSelectedOptionIndex();
+            }}
+            onClick={() => combobox.openDropdown()}
+            onFocus={() => combobox.openDropdown()}
+            onBlur={() => combobox.closeDropdown()}
+          />
+        </Combobox.Target>
 
-      <Combobox.Dropdown>
-        <Combobox.Options>
-          {options}
-        </Combobox.Options>
-      </Combobox.Dropdown>
-    </Combobox>
+        <Combobox.Dropdown>
+          <Combobox.Options>
+            {options}
+          </Combobox.Options>
+        </Combobox.Dropdown>
+      </Combobox>
+    </div>  
   );
 } 
 export default ComboBoxFilter;
