@@ -33,8 +33,8 @@ function Card({ image, title, category, age , genre, descipcion1, descripcion2, 
           </Title>
         </div>
         <Button
-          variant="filled"
-          color="gray"
+          variant="gradient"
+          gradient={{ from: 'rgba(237, 50, 178, 1)', to: 'rgba(227, 132, 200, 0.71)', deg: 76 }}
           size="md"
           radius="xl"
           onClick={() => setOpened(true)}
