@@ -1,39 +1,82 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from '@mantine/carousel';
-import { useMediaQuery } from '@mantine/hooks';
-import { Button, Paper, Title, useMantineTheme, Text, Group, Center } from '@mantine/core';
+import { useMediaQuery, useDisclosure } from '@mantine/hooks';
+import { Button, Paper, Modal, Title, useMantineTheme, Text, Group, Center } from '@mantine/core';
 import classes from './carousel.module.css';
 import '@mantine/carousel/styles.css';
 
-function Card({ image, title, category }) {
+function Card({ image, title, category, age , genre, descipcion1, descripcion2, esterilizado}) {
+  const [opened, setOpened] = useState(false);
+  const estadoEsterilizado = esterilizado === 1 ? "Está esterilizado" : "No está esterilizado";
+
   return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      style={{
-        backgroundImage: `url(${image})`,
-        height: '300px',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {category}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Button variant="filled" color="gray" size="md" radius="xl">
-        Detalles
-      </Button>
-    </Paper>
+    <>
+      <Paper
+        shadow="md"
+        p="xl"
+        radius="md"
+        style={{
+          backgroundImage: `url(${image})`,
+          height: '300px',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+        className={classes.card}
+      >
+        <div>
+          <Text className={classes.category} size="xs">
+            {category}
+          </Text>
+          <Title order={3} className={classes.title}>
+            {title}
+          </Title>
+        </div>
+        <Button
+          variant="filled"
+          color="gray"
+          size="md"
+          radius="xl"
+          onClick={() => setOpened(true)}
+        >
+          Detalles
+        </Button>
+      </Paper>
+
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title={title}
+      >
+        <div
+          style={{
+            backgroundColor: 'rgba(45, 214, 247, 1)',
+            border: '15px solid yellow',
+            borderRadius: '10px',
+            padding: '20px',
+          }}
+        >
+          <img
+            src= {image}
+            alt="Animal"
+            style={{
+              width: '100%',
+              height: '50%',
+              borderRadius: '10px',
+              marginBottom: '20px',
+            }}
+          />
+          <Text>Edad: {age}</Text>
+          <Text>Sexo: {genre}</Text>
+          <Text>{estadoEsterilizado}</Text> 
+          <Text>{descripcion2}</Text> 
+          <Text>{descipcion1}</Text> 
+        </div>
+      </Modal>
+    </>
   );
 }
+
 
 Card.propTypes = {
   image: PropTypes.string.isRequired,
@@ -98,6 +141,11 @@ function CarruselAves({ selectedRegionId }) {
           image={animal.imagen}
           title={animal.nombre}
           category={animal.estado}
+          age={animal.edad}
+          genre={animal.genero}
+          descipcion1= {animal.desc_fisica}
+          descripcion2={animal.desc_personalidad}
+          esterilizado={animal.esterilizado}
         />
       </Carousel.Slide>
     );
@@ -111,7 +159,7 @@ function CarruselAves({ selectedRegionId }) {
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Aves 🐥</Title>
       <Carousel
-        style={{ marginTop: 50, width: '150%', height: '300px' }}
+        style={{ marginTop: 50, width: '150%', height: '500px' }}
         slideSize={mobile ? '100%' : '33.33%'}
         slideGap="xl"
         align="start"
