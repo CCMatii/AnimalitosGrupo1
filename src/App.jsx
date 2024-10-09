@@ -9,6 +9,7 @@ import CarruselGatos from "./components/carouselCats";
 import CarruselConejos from "./components/carouselRabbit";
 import CarruselRoedores from "./components/carouselMouse";
 import CarruselAves from "./components/carouselBird";
+import Detalles from "./components/pop-up";
 
 export default function App() {
   const [selectedRegionId, setSelectedRegionId] = useState(0);
@@ -43,23 +44,16 @@ export default function App() {
                 <Group gap="xl">
                 <ComboBoxFilter onRegionChange={setSelectedRegionId}/>
                 <Titulo />
+                
                 </Group>
-                {areAllCarouselsEmpty ? (
-                <Image
-                src="https://cdn-icons-png.flaticon.com/512/4634/4634731.png"
-                alt="No hay animales disponibles con estos filtros."
-                style={{ marginTop: '40px' }}
-                />
-                ) : (
-                  <>
-                  {carruselAnimales}
-                  {carruselPerros}
-                  {carruselGatos}
-                  {carruselConejos}
-                  {carruselRoedores}
-                  {carruselAves}
-                  </>
-                )}
+                <Detalles />
+                <CarruselAnimales selectedRegionId={selectedRegionId}/>
+                <CarruselPerros selectedRegionId={selectedRegionId}/>
+                <CarruselGatos selectedRegionId={selectedRegionId}/>
+                <CarruselConejos selectedRegionId={selectedRegionId}/>
+                <CarruselRoedores selectedRegionId={selectedRegionId}/>
+                <CarruselAves selectedRegionId={selectedRegionId}/>
+
               </Container>
             </BackgroundImage>
       </Box>
