@@ -111,7 +111,7 @@ function CarruselAves({ selectedRegionId }) {
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Aves 🐥</Title>
       <Carousel
-        style={{ marginTop: 50, width: '150%', height: '500px' }}
+        style={{ marginTop: 50, width: '150%', height: '300px' }}
         slideSize={mobile ? '100%' : '33.33%'}
         slideGap="xl"
         align="start"
