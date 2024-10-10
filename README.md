@@ -11,5 +11,7 @@ Nuestro proyecto Animalitos consiste en una aplicación para la muestra de anima
 ## Dependencias necesarias
 
 npm install
+
 npm install @mantine/core @mantine/hooks @mantine/form
+
 npm install install embla-carousel-react@^7.1.0 @mantine/carousel
