@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { Button, Paper, Modal, Title, useMantineTheme, Text, Group, Center } from '@mantine/core';
 import classes from './carousel.module.css';
 import '@mantine/carousel/styles.css';
 
-function Card({ image, title, category, age , genre, descipcion1, descripcion2, esterilizado}) {
+function Card({ image, title, category, age , genre, descipcion1, descripcion2, esterilizado}) { //Tarjetas que van dentro del carrusel
+  //usestate para abrir y cerrar el pop-up
   const [opened, setOpened] = useState(false);
+  //usestate para convertir el dato de esterilización de la API en un texto
   const estadoEsterilizado = esterilizado === 1 ? "Está esterilizado" : "No está esterilizado";
 
   return (
@@ -43,7 +44,7 @@ function Card({ image, title, category, age , genre, descipcion1, descripcion2, 
         </Button>
       </Paper>
 
-      <Modal
+      <Modal //Componente que hace el pop-up
         opened={opened}
         onClose={() => setOpened(false)}
         title={title}
@@ -77,27 +78,23 @@ function Card({ image, title, category, age , genre, descipcion1, descripcion2, 
   );
 }
 
-
-Card.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-};
-
-function CarruselPerros({ selectedRegionId }) {
+function CarruselPerros({ selectedRegionId }) { //Función que diseña el carrusel
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  //usestate para definir si la consulta a la API está cargando
   const [isLoading, setIsLoading] = useState(true);
+  //usestate para definir si existe algún error
   const [error, setError] = useState(null);
+  //usestate para hacer el arreglo de animales
   const [animals, setAnimals] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { //Consulta a la API
     setIsLoading(true)
     setError(null)
     
     let link = `https://huachitos.cl/api/animales/tipo/perro`;
 
-    if (selectedRegionId !== 0 && selectedRegionId >= 1 && selectedRegionId <= 16) {
+    if (selectedRegionId !== 0 && selectedRegionId >= 1 && selectedRegionId <= 16) { //Selecciona endpoint según la selección del filtro
       link = `https://huachitos.cl/api/animales/region/${selectedRegionId}/tipo/perro/estado/adopcion`;
     }
 
@@ -134,7 +131,7 @@ function CarruselPerros({ selectedRegionId }) {
   const slides = []
 
 
-  for (let i = 0; i < animals.length; i++) {
+  for (let i = 0; i < animals.length; i++) { //Poner las tarjetas de todos los animales dentro del carrusel
     const animal = animals[i];
     slides.push(
       <Carousel.Slide key={animal.id}>
@@ -156,7 +153,7 @@ function CarruselPerros({ selectedRegionId }) {
     return null;
   }
 
-  return (
+  return ( //Ejecución del carrusel
     <Group justify="center">
       <Title order={2} style={{ marginTop: 40 }}>Perros 🐕</Title>
       <Carousel

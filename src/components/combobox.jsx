@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
-const regions = [
+const regions = [ //Arreglo de Regiones
   { name: 'Todas las Regiones', id: 0 },
   { name: 'Arica y Parinacota', id: 1 },
   { name: 'Tarapacá', id: 2 },
@@ -21,7 +21,7 @@ const regions = [
   { name: 'Magallanes y Antártica Chilena', id: 16 },
 ];
 
-function ComboBoxFilter({ onRegionChange }) {
+function ComboBoxFilter({ onRegionChange }) { //Componente Combobox
   const combobox = useCombobox();
   const [value, setValue] = useState('Todas las Regiones');
   const shouldFilterOptions = !regions.some((item) => item.name === value);
@@ -29,13 +29,13 @@ function ComboBoxFilter({ onRegionChange }) {
     ? regions.filter((item) => item.name.toLowerCase().includes(value.toLowerCase().trim()))
     : regions;
 
-  const options = filteredOptions.map((item) => (
+  const options = filteredOptions.map((item) => ( //Pone todo el arreglo de regiones dentro del combobox como opción
     <Combobox.Option value={item.name} key={item.id}>
       {item.name}
     </Combobox.Option>
   ));
 
-  return (
+  return ( //Ejecución
     <div style={{ textAlign: 'left', marginLeft: 0 }}> 
       <Combobox
         onOptionSubmit={(optionValue) => {
