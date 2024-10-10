@@ -13,20 +13,6 @@ import CarruselAves from "./components/carouselBird";
 
 export default function App() {
   const [selectedRegionId, setSelectedRegionId] = useState(0);
-  const carruselAnimales = <CarruselAnimales selectedRegionId={selectedRegionId}/>;
-  const carruselPerros = <CarruselPerros selectedRegionId={selectedRegionId}/>;
-  const carruselGatos = <CarruselGatos selectedRegionId={selectedRegionId}/>;
-  const carruselConejos = <CarruselConejos selectedRegionId={selectedRegionId}/>;
-  const carruselRoedores = <CarruselRoedores selectedRegionId={selectedRegionId}/>;
-  const carruselAves = <CarruselAves selectedRegionId={selectedRegionId}/>;
-
-  const areAllCarouselsEmpty = 
-    !carruselAnimales &&
-    !carruselPerros &&
-    !carruselGatos &&
-    !carruselConejos &&
-    !carruselRoedores &&
-    !carruselAves;
 
   return (
     <MantineProvider>
