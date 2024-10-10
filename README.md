@@ -8,7 +8,7 @@ Hecho por: Victor Calbucura, Dennise Maldonado, Matías Salgado, Ángel Vargas
 
 Nuestro proyecto Animalitos consiste en una aplicación para la muestra de animales que se encuentren en adopción a lo largo de todo Chile. La información es recopilada mediante la API de Huachitos (https://huachitos.cl/docs)
 
-##Dependencias necesarias
+## Dependencias necesarias
 
 npm install
 npm install @mantine/core @mantine/hooks @mantine/form
